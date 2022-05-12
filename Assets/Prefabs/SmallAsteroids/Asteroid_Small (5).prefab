@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8930241994480800879}
   - component: {fileID: 1907356927481590554}
-  - component: {fileID: -8128257522851611965}
   m_Layer: 7
   m_Name: Asteroid_Small (5)
   m_TagString: Untagged
@@ -147,15 +146,3 @@ PolygonCollider2D:
       - {x: -0.2858106, y: -0.019237459}
       - {x: -0.051007032, y: -0.43735588}
       - {x: 0.27742094, y: -0.41107607}
---- !u!114 &-8128257522851611965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8930241994480800876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009e727c3e55fed4d89daeafa8da84d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
