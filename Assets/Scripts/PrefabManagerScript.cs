@@ -4,46 +4,56 @@ using UnityEngine;
 
 public class PrefabManagerScript : MonoBehaviour
 {
-    #region PUBLIC VARIABLES
-    #endregion
-    #region PRIVATE VARIABLES
-    #endregion
-    #region SINGLETON
-    private static PrefabManagerScript instance;
-    public static PrefabManagerScript Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<PrefabManagerScript>();
-                if (instance == null)
-                {
-                    GameObject container = new GameObject("PrefabManager");
-                    instance = container.AddComponent<PrefabManagerScript>();
-                }
-            }
-            return instance;
-        }
-    }
-    #endregion
+  
 
-    #region MONOBEHAVIOUR METHODS
+	#region PUBLIC VARIABLES
+	// An array of large asteroid prefabs. Order doesn't matter.
+	public GameObject[] largeAsteroidPrefabs;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	// An array of small asteroid prefabs. Order doesn't matter.
+	public GameObject[] smallAsteroidPrefabs;
+	#endregion
 
-    }
+	#region SINGLETON PATTERN
+	public static PrefabManagerScript _instance;
 
-    // Update is called once per frame
-    void Update()
-    {
+	public static PrefabManagerScript Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = GameObject.FindObjectOfType<PrefabManagerScript>();
 
-    }
-    #endregion
-    #region PUBLIC METHODS
-    #endregion
-    #region PRIVATE METHODS
-    #endregion
+				if (_instance == null)
+				{
+					GameObject container = new GameObject("PrefabManager");
+					_instance = container.AddComponent<PrefabManagerScript>();
+				}
+			}
+
+			return _instance;
+		}
+	}
+	#endregion
+
+	#region PUBLIC METHODS
+	// Return a large asteroid prefab.
+	public GameObject GetLargeAsteroidPrefab()
+	{
+		if (largeAsteroidPrefabs.Length > 0)
+			return largeAsteroidPrefabs[Random.Range(0, largeAsteroidPrefabs.Length)];
+
+		return null;
+	}
+
+	// Return a small asteroid prefab.
+	public GameObject GetSmallAsteroidPrefab()
+	{
+		if (smallAsteroidPrefabs.Length > 0)
+			return smallAsteroidPrefabs[Random.Range(0, smallAsteroidPrefabs.Length)];
+
+		return null;
+	}
+	#endregion
 }
