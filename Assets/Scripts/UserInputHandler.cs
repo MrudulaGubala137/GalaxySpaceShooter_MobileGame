@@ -50,8 +50,9 @@ namespace MyMobileGalaxyShooter
                         {
                             onTouchAction(touch);
                         }
-                        tapGestureFailed = false;//Making  for the next tap
+
                     }
+                    tapGestureFailed = false;//Making  for the next tap
                 }
             }
         }
