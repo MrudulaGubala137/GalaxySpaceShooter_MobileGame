@@ -1,0 +1,47 @@
+     
+---------------------------*GALAXY SPACE SHOOTER*------------------------------
+
+ConstantsScript:
+
+This contains all the constants used in game where there is no requirements to change.
+-------------------
+UserInputHandler:
+
+1.Maximum touch movement is taken to restrict the touch from user.
+2.movement is taken to rotate the ship to the direction of touch.
+3.Checking whether the touch is success or failure.
+4.Touch count is taken and stored in an array. Only considering first touch it checks the phases.
+5.When it is in began phase the touch movement is made to zero.
+6.In moved phase movement is calculated and checked with the maximum touch movement.
+7.If it is lesser, then We subscribe to an event onTouchAction if not touch is failed.
+------------------------------
+ShipScript:
+
+1.Based on the Touch Gesture here we subscribe an event in which ship rotates towards touch point.
+2.We use Coroutiene function to make the ship to rotatae in the user touch direction.
+3.We calculate the difference between current position and touch position.
+4.Calculate the difference between start rotation and end rotation. Look rotation is used in ene rotation
+to look in the direction of the touch point i.e, temppoint.
+5.End rotation is given to the ship rotation and slerp is used for smooth rotation.
+6.After the ship rotated in touch direction shoot is used to generate bullet from it.
+---------------------------------
+ObjectPoolScript:
+
+1.Queue is used as a pool for GameObjects.
+2.
+
+-----------------------------------
+Prefab Manager Script:
+
+1.Taken GameObject arrays for asteroidPrefabs.And created an instance of the class.
+2.If ArrayLength is greater than zero then we return any random asteroid from 
+the array within the length.
+
+------------------------------------
+Pool Manager Script:
+
+1.ObjectToPool is a class created to store the prefab and capacity.
+2.Created an array of ObjectToPool class where we can have different prefabs.
+3.Created a pools dictionary with stringname as key and objectPool as a value.
+4.Created pools for different objects.
+

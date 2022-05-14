@@ -24,10 +24,7 @@ public class AsteroidScript : MonoBehaviour
 	#endregion
 
 	#region MONOBEHAVIOUR METHODS
-	void start()
-    {
-
-    }
+	
 	void OnEnable()
 	{
 		isLarge = (Random.Range(0, 2) == 0);
@@ -44,6 +41,7 @@ public class AsteroidScript : MonoBehaviour
 	void Awake()
 	{
 		gameManager = GameManagerScript.Instance;
+		rigidbody2D = GetComponent<Rigidbody2D>();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		polyCollider = (PolygonCollider2D)GetComponent<Collider2D>();
 	}
@@ -124,9 +122,9 @@ public class AsteroidScript : MonoBehaviour
 		if (isLarge)
 		{
 			GameObject prefab = PrefabManagerScript.Instance.GetLargeAsteroidPrefab();
-			spriteRenderer.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
+			spriteRenderer.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
-			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponent<Collider2D>());
+			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponentInChildren<Collider2D>());
 			polyCollider.pathCount = prefabCollider.pathCount;
 
 			for (int i = 0; i < prefabCollider.pathCount; i++)
@@ -135,9 +133,9 @@ public class AsteroidScript : MonoBehaviour
 		else
 		{
 			GameObject prefab = PrefabManagerScript.Instance.GetSmallAsteroidPrefab();
-			spriteRenderer.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
+			spriteRenderer.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
-			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponent<Collider2D>());
+			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponentInChildren<Collider2D>());
 			polyCollider.pathCount = prefabCollider.pathCount;
 
 			for (int i = 0; i < prefabCollider.pathCount; i++)

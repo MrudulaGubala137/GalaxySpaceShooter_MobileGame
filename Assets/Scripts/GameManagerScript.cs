@@ -44,9 +44,10 @@ public class GameManagerScript : MonoBehaviour
 	void Start()
 	{
 		lives = maxNumLives;
-		//mainCamera = Camera.main;
+		mainCamera = Camera.main;
 
-		//StartCoroutine(SpawnAsteroids());
+		StartCoroutine(SpawnAsteroids());
+		Debug.Log("StartCoroutine");
 	}
 	#endregion
 
@@ -78,6 +79,7 @@ public class GameManagerScript : MonoBehaviour
 		while (true)
 		{
 			SpawnAsteroid();
+			Debug.Log("Method");
 
 			yield return new WaitForSeconds(Random.Range(2f, 8f));
 		}
@@ -86,6 +88,7 @@ public class GameManagerScript : MonoBehaviour
 	// Spawn an asteroid off the screen.
 	private void SpawnAsteroid()
 	{
+		Debug.Log("Spawing Asteroids");
 		AsteroidScript newAsteroid = PoolManagerScript.Instance.Spawn(ConstantsScripts.ASTEROID_PREFAB_NAME).GetComponent<AsteroidScript>();
 
 		Vector2 direction = newAsteroid.GetForceApplied();

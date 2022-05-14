@@ -29,7 +29,7 @@ namespace MyMobileGalaxyShooter
             if(Input.touchCount>0)  //To figure it out no. of touches are greater than 0 are not. If no touches, then no movement
             {
               Touch touch =  Input.touches[0];   // need to find out no.of touches on the screen. If there are more no.of touches, need to call this array
-                if(touch.phase==TouchPhase.Began) // IWe have a several touch phases. Began enters the first frame of the touch
+                if(touch.phase==TouchPhase.Began) // We have a several touch phases. Began enters the first frame of the touch
                 {
                     movement = Vector2.zero;
                 }
