@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7150458578046758088
 Transform:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7150458578441005039}
   - component: {fileID: 7150458578441005038}
-  - component: {fileID: 7150458578441005033}
+  - component: {fileID: 6476520123817948049}
   m_Layer: 6
   m_Name: BulletSprite
   m_TagString: Untagged
@@ -128,17 +128,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!136 &7150458578441005033
-CapsuleCollider:
+--- !u!70 &6476520123817948049
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7150458578441005036}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.05867075
-  m_Height: 0.21574447
-  m_Direction: 1
-  m_Center: {x: 0.0059041753, y: 0, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.11, y: 0.20000009}
+  m_Direction: 0

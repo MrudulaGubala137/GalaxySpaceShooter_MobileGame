@@ -14,7 +14,7 @@ public class GameManagerScript : MonoBehaviour
             if (instance == null)
             {
                 instance = GameObject.FindObjectOfType<GameManagerScript>();
-                if (instance = null)
+                if (instance == null)
                 {
                     GameObject container = new GameObject("GameManager");
                     instance= container.AddComponent<GameManagerScript>();
@@ -78,10 +78,11 @@ public class GameManagerScript : MonoBehaviour
 	{
 		while (true)
 		{
-			SpawnAsteroid();
+			
 			Debug.Log("Method");
 
 			yield return new WaitForSeconds(Random.Range(2f, 8f));
+			SpawnAsteroid();
 		}
 	}
 

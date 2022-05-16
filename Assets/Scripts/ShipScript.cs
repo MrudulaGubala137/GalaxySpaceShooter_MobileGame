@@ -13,12 +13,16 @@ public class   ShipScript : MonoBehaviour
     bool isRotating = false;
     const string TURN_COROUTINE_FUNCTION= "Turn_And_RotateOnTap";
     GameManagerScript gameManager;
+    ParticleManager particleManager;
+   public GameObject shoot;
+   
     #endregion
     #region MONOBEHAVIOUR METHODS
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManagerScript.Instance;
+       
     }
     
 
@@ -30,6 +34,17 @@ public class   ShipScript : MonoBehaviour
     private void OnEnable() //Subscribing event when a GameObject is active
     {
         MyMobileGalaxyShooter.UserInputHandler.onTouchAction += ToWardsTouch ;
+        if (!useAccelerometer)
+        {
+            MyMobileGalaxyShooter.UserInputHandler.onTouchAction += TowardsTouch;
+            MyMobileGalaxyShooter.UserInputHandler.OnPanBegan += StopTurn;
+            MyMobileGalaxyShooter.UserInputHandler.OnPanHeld += TowardsTouch;
+        }
+        else
+        {
+            MyMobileGalaxyShooter.UserInputHandler.OnAccelerometerChanged += MoveWithAcceleration;
+            MyMobileGalaxyShooter.UserInputHandler.onTouchAction += TowardsTouch;
+        }
     }
     private void OnDisable()    //DeSubscribing event when a GameObject is active
     {
@@ -80,6 +95,7 @@ public class   ShipScript : MonoBehaviour
     }
     private void Shoot()
     {
+        ParticleManager.Instance.ShootEffect(shoot,launcher);
         BulletScript bullet = PoolManagerScript.Instance.Spawn(ConstantsScripts.BULLET_PREFAB_NAME).GetComponent<BulletScript>();
         bullet.SetPosition(launcher.position);
         bullet.SetTrajectory(bullet.transform.position + transform.forward);

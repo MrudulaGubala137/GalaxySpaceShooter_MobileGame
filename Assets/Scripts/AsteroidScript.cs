@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AsteroidScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+	// Start is called before the first frame update
 
-// Class for asteroid objects.
+	// Class for asteroid objects.
 
+	public GameObject blast;
 
 	#region PRIVATE VARIABLES
 	private bool isLarge;
@@ -50,23 +51,29 @@ public class AsteroidScript : MonoBehaviour
 	{
 		if (collision.gameObject.layer == ConstantsScripts.SHIP_LAYER_NUMBER)
 		{
-			collision.gameObject.GetComponent<ShipScript>().OnHit();
+			//collision.gameObject.GetComponent<ShipScript>().OnHit();
 
 			if (!isLarge)
+			{
+				//ParticleManager.Instance.AsteroidBlastEffect(blast,this.transform.position);
 				PoolManagerScript.Instance.Recycle(ConstantsScripts.ASTEROID_PREFAB_NAME, gameObject);
+			}
 			else
 				BreakApart();
 		}
 		else if (collision.gameObject.layer == ConstantsScripts.BULLET_LAYER_NUMBER)
 		{
-			PoolManagerScript.Instance.Recycle(ConstantsScripts.BULLET_PREFAB_NAME, collision.transform.parent.gameObject);
-
+			 PoolManagerScript.Instance.Recycle(ConstantsScripts.BULLET_PREFAB_NAME, collision.transform.parent.gameObject);
+			print("Hit Bullet");
 			if (!isLarge)
+			{
+				ParticleManager.Instance.AsteroidBlastEffect(blast, this.transform.position);
 				PoolManagerScript.Instance.Recycle(ConstantsScripts.ASTEROID_PREFAB_NAME, gameObject);
+			}
 			else
 				BreakApart();
 
-			gameManager.GainPoints(points);
+			//gameManager.GainPoints(points);
 		}
 	}
 	#endregion
@@ -124,7 +131,7 @@ public class AsteroidScript : MonoBehaviour
 			GameObject prefab = PrefabManagerScript.Instance.GetLargeAsteroidPrefab();
 			spriteRenderer.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
-			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponentInChildren<Collider2D>());
+			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponent<Collider2D>());
 			polyCollider.pathCount = prefabCollider.pathCount;
 
 			for (int i = 0; i < prefabCollider.pathCount; i++)
@@ -135,7 +142,7 @@ public class AsteroidScript : MonoBehaviour
 			GameObject prefab = PrefabManagerScript.Instance.GetSmallAsteroidPrefab();
 			spriteRenderer.sprite = prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
-			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponentInChildren<Collider2D>());
+			PolygonCollider2D prefabCollider = ((PolygonCollider2D)prefab.GetComponent<Collider2D>());
 			polyCollider.pathCount = prefabCollider.pathCount;
 
 			for (int i = 0; i < prefabCollider.pathCount; i++)
